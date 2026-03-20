@@ -1,0 +1,37 @@
+import { useState } from "react";
+import HeroLogo from "../assets/hero.jpg"
+import { mockData } from "../hooks/usemetrics";
+import MetricsCard from "../components/cards/MetricCard";
+
+export default function HeroSection() {
+    const NIGERIA = "Nigeria";
+    const ArrayTitle = NIGERIA.split("")
+    const COLORS = ['#22c55e', '#F0EDE6']
+
+    const mapArrayTitle = ArrayTitle.map((letter, index) => (
+        <span key={index}
+        style={{
+            color: COLORS[index & letter.length]
+        }}>
+            {letter}
+        </span>
+    ))
+    return(
+        <div>
+            <div className="relative bg-cover bg-no-repeat bg-center"  style={
+            {backgroundImage: `url(${HeroLogo})`, 
+            minHeight: "350px",
+            }}
+            >
+                <div className="absolute inset-0 bg-black/60 p-6">
+                    <h1 className="font-['Merriweather'] font-extrabold text-4xl md:text-6xl  mb-5 leading-relaxed ">{mapArrayTitle} is the 52nd  <strong className="text-[#C9A84C]">largest economy</strong> in the <span className="md:[text-shadow:_2px_2px_8px_rgba(255,247,247,0.8)]">World</span> </h1>
+                    <span className="text-[#F0EDE6] text-shadow-lg text-shadow-black md:text-2xl">Yet it ranks  <strong className="text-red-500">161st in human development</strong>&mdash; the gap reveals how growth alone rarely lifts people out of poverty.</span>
+                </div>
+            </div>
+            <div>
+                <MetricsCard mockData={mockData}/>
+            </div>
+        </div>
+        
+    )
+}
