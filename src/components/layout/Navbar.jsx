@@ -11,12 +11,13 @@ const NAV_LINKS = [
 
 export default function AppNavBar() {
     const location = useLocation();
+    // eslint-disable-next-line
     const [lastUpdated, setLastUpdated] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false); //eslint-disable-line
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="border-b border-gray-200 bg-transparent px-6 py-3">
+        <nav className="border-b border-gray-700 bg-transparent px-6 py-3">
             <div className="flex items-center justify-between">
 
                 {/* Logo */}
@@ -32,8 +33,8 @@ export default function AppNavBar() {
                             to={link.path}
                             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
                                 ${location.pathname === link.path
-                                    ? "text-green-600 border-b-2 border-green-500"
-                                    : "text-gray-600 hover:text-green-500 hover:bg-[#F0EDE6]"
+                                    ? "text-green-400 border-b-2 border-green-400"
+                                    : "text-gray-300 hover:text-green-400 hover:bg-gray-800"
                                 }`}
                         >
                             {link.label}
@@ -42,18 +43,19 @@ export default function AppNavBar() {
                 </div>
 
                 {/* Live Timestamp */}
-                <div className="hidden md:flex items-center gap-2 text-sm text-gray-500">
+                <div className="hidden md:flex items-center gap-2 text-sm text-gray-400">
                     <span className={`h-2 w-2 rounded-full ${loading ? "bg-yellow-400" : "bg-green-500"}`} />
                     <span>Last updated:</span>
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-gray-200">
                         {loading ? "fetching..." : lastUpdated ?? "—"}
                     </span>
                 </div>
 
                 {/* Mobile Hamburger */}
                 <button
-                    className="md:hidden text-gray-600 hover:text-green-500 focus:outline-none"
+                    className="md:hidden text-gray-300 hover:text-green-400 focus:outline-none"
                     onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label={menuOpen ? "Close menu" : "Open menu"}
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         {menuOpen
@@ -75,8 +77,8 @@ export default function AppNavBar() {
                             onClick={() => setMenuOpen(false)}
                             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
                                 ${location.pathname === link.path
-                                    ? "text-green-600 bg-[#F0EDE6] border-l-4 border-green-500"
-                                    : "text-gray-600 hover:text-green-500 hover:bg-[#F0EDE6]"
+                                    ? "text-green-400 bg-gray-800 border-l-4 border-green-400"
+                                    : "text-gray-300 hover:text-green-400 hover:bg-gray-800"
                                 }`}
                         >
                             {link.label}

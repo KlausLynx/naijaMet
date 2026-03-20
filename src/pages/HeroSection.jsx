@@ -1,5 +1,5 @@
-import { useState } from "react";
-import HeroLogo from "../assets/hero.jpg"
+import { useState } from "react"; //eslint-disable-line
+import HeroLogo from "../assets/hero.webp";
 import { mockData } from "../hooks/usemetrics";
 import MetricsCard from "../components/cards/MetricCard";
 

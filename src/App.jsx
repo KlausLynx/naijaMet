@@ -14,9 +14,11 @@ function App() {
       }}
     >
       <AppNav />  
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </main>
     </div>
   );
 }
