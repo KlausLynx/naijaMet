@@ -8,7 +8,7 @@ function App() {
     <div className="App" 
       style={{
         backgroundColor: "#0D0F0E",
-        fontFamily: "'Bebas Neue'",
+        fontFamily: "'Merriweather'",
         letterSpacing: "1px"
         
       }}
