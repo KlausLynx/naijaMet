@@ -137,7 +137,7 @@ export default function DualAxisChart() {
             width: "100%",
             maxWidth: 900,
             boxSizing: "border-box",
-            padding: "28px 28px 20px"
+            padding: "28px 12px 20px"  
         }}>
             <div style={{marginBottom: 24}}>
                 <div style={{display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12}}>
@@ -197,7 +197,7 @@ export default function DualAxisChart() {
                 </div>
             </div>
             <div style={{
-                width: "100%", height: 360
+                width: "100%", height: window.innerWidth < 640 ? 240 : 360  // ← shorter on mobile
             }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={data}>
@@ -213,7 +213,13 @@ export default function DualAxisChart() {
 
                         <Tooltip content={<CustomTooltip/>} />
 
-                        <XAxis dataKey="year" tick={{fontSize: 14, fill: "#475569", fontFamily: "monospace"}} tickLine={false} axisLine={false} interval={4}/>
+                        <XAxis 
+                            dataKey="year" 
+                            tick={{ fontSize: window.innerWidth < 640 ? 9 : 14, fill: "#475569", fontFamily: "monospace" }}  
+                            tickLine={false} 
+                            axisLine={false} 
+                            interval={window.innerWidth < 640 ? 9 : 4}  
+                        />
 
                         <YAxis 
                         yAxisId="left"

@@ -3,10 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 const NAV_LINKS = [
-    { label: "Home", path: "/" },
-    { label: "section_1", path: "/section_1" },
-    { label: "section_2", path: "/section_2" },
-    { label: "section_3", path: "/section_3" },
+    { label: "Lying Averages", path: "/Lying Averages" },
+    { label: "Inside Nigeria", path: "/Inside Nigeria" },
+    { label: "The Hidden Half", path: "/The Hidden Half" },
+    { label: "Growth for Who?", path: "/Growth for Who?" },
+    { label: "Measure What Matters", path: "/Measure What Matters" },
 ];
 
 export default function AppNavBar() {

@@ -1,6 +1,6 @@
 import { useState } from "react"; //eslint-disable-line
 import HeroLogo from "../assets/hero.webp";
-import { mockData } from "../hooks/usemetrics";
+import{mockData } from "../hooks/usemetrics";
 import MetricsCard from "../components/cards/MetricCard";
 import DualAxisChart from "./DualAxisChart";    
 
@@ -25,8 +25,8 @@ export default function HeroSection() {
             }}
             >
                 <div className="absolute inset-0 bg-black/60 p-6">
-                    <h1 className="font-['Merriweather'] font-extrabold text-4xl md:text-6xl mb-5 leading-snug ">{mapArrayTitle} is the 52nd  <strong className="text-[#C9A84C]">largest economy</strong> in the <span className="md:[text-shadow:_2px_2px_8px_rgba(255,247,247,0.8)]">World</span> </h1>
-                    <span className="text-[#F0EDE6] text-shadow-lg text-shadow-black md:text-2xl">Yet it ranks  <strong className="text-red-500">161st in human development</strong>&mdash; the gap reveals how growth alone rarely lifts people out of poverty.</span>
+                    <h1 className="font-['Merriweather'] font-extrabold text-4xl md:text-6xl mb-5 leading-snug ">{mapArrayTitle} is the 52nd  <strong className="text-[#F59E0B]">largest economy</strong> in the <span className="md:[text-shadow:_2px_2px_8px_rgba(255,247,247,0.8)]">World</span> </h1>
+                    <span className="text-[#F0EDE6] text-shadow-lg text-shadow-black md:text-2xl">Yet it ranks  <strong className="text-[#D9534F]">161st in human development</strong>&mdash; the gap reveals how growth alone rarely lifts people out of poverty.</span>
                 </div>
             </div>
             <div>
