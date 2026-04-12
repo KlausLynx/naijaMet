@@ -16,7 +16,7 @@ export default function MetricsChart ({data, formatter }) {
                 </defs>
                     <CartesianGrid vertical={false} stroke="#cfcfcf57" strokeDasharray="2 4" strokeOpacity={0.3}/>
                     <XAxis 
-                        dataKey="year" 
+                        dataKey="date" 
                         interval="preserveEnd" 
                         ticks={[FIRST_YEAR, LAST_YEAR]} 
                         tick={{fontSize: 12, fill: "#a1a1a1",fontFamily: 'monospace'}} 

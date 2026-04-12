@@ -1,6 +1,6 @@
 import { useState } from "react"; //eslint-disable-line
 import HeroLogo from "../assets/hero.webp";
-import{mockData } from "../hooks/usemetrics";
+import{cards } from "../hooks/usemetrics.js";
 import MetricsCard from "../components/cards/MetricCard";
 import DualAxisChart from "./DualAxisChart";    
 
@@ -30,7 +30,7 @@ export default function HeroSection() {
                 </div>
             </div>
             <div>
-                <MetricsCard mockData={mockData}/>
+                <MetricsCard mockData={cards}/>
             </div>
             <div className="flex items-center justify-center w-full">
                 <DualAxisChart />

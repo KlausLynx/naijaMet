@@ -1,79 +1,6 @@
 import { ComposedChart, Legend, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
-
-const data = [
-    { year: 1960, gdpPerCapita: 93,   giniCoefficient: 0.37 },
-    { year: 1961, gdpPerCapita: 98,   giniCoefficient: 0.38 },
-    { year: 1962, gdpPerCapita: 104,  giniCoefficient: 0.38 },
-    { year: 1963, gdpPerCapita: 111,  giniCoefficient: 0.39 },
-    { year: 1964, gdpPerCapita: 118,  giniCoefficient: 0.39 },
-    { year: 1965, gdpPerCapita: 126,  giniCoefficient: 0.40 },
-    { year: 1966, gdpPerCapita: 121,  giniCoefficient: 0.40 },
-    { year: 1967, gdpPerCapita: 108,  giniCoefficient: 0.41 },
-    { year: 1968, gdpPerCapita: 113,  giniCoefficient: 0.41 },
-    { year: 1969, gdpPerCapita: 120,  giniCoefficient: 0.41 },
-  // OIL BOOM — GDP jumps hard, Gini jumps with it (oil money = elite money)
-    { year: 1970, gdpPerCapita: 156,  giniCoefficient: 0.42 },
-    { year: 1971, gdpPerCapita: 195,  giniCoefficient: 0.43 },
-    { year: 1972, gdpPerCapita: 218,  giniCoefficient: 0.43 },
-    { year: 1973, gdpPerCapita: 274,  giniCoefficient: 0.44 },
-    { year: 1974, gdpPerCapita: 413,  giniCoefficient: 0.45 },
-    { year: 1975, gdpPerCapita: 381,  giniCoefficient: 0.46 },
-    { year: 1976, gdpPerCapita: 420,  giniCoefficient: 0.46 },
-    { year: 1977, gdpPerCapita: 462,  giniCoefficient: 0.47 },
-    { year: 1978, gdpPerCapita: 441,  giniCoefficient: 0.47 },
-    { year: 1979, gdpPerCapita: 502,  giniCoefficient: 0.48 },
-    { year: 1980, gdpPerCapita: 588,  giniCoefficient: 0.49 },
-  // OIL CRASH — GDP collapses, but Gini stays stuck (rich keep assets, poor lose jobs)
-    { year: 1981, gdpPerCapita: 521,  giniCoefficient: 0.49 },
-    { year: 1982, gdpPerCapita: 487,  giniCoefficient: 0.49 },
-    { year: 1983, gdpPerCapita: 421,  giniCoefficient: 0.49 },
-    { year: 1984, gdpPerCapita: 390,  giniCoefficient: 0.48 },
-    { year: 1985, gdpPerCapita: 376,  giniCoefficient: 0.48 },
-    { year: 1986, gdpPerCapita: 251,  giniCoefficient: 0.48 },
-    { year: 1987, gdpPerCapita: 263,  giniCoefficient: 0.48 },
-    { year: 1988, gdpPerCapita: 278,  giniCoefficient: 0.49 },
-    { year: 1989, gdpPerCapita: 271,  giniCoefficient: 0.49 },
-  // MILITARY ERA — stagnation, Gini flatlines high
-    { year: 1990, gdpPerCapita: 315,  giniCoefficient: 0.49 },
-    { year: 1991, gdpPerCapita: 307,  giniCoefficient: 0.49 },
-    { year: 1992, gdpPerCapita: 298,  giniCoefficient: 0.49 },
-    { year: 1993, gdpPerCapita: 272,  giniCoefficient: 0.50 },
-    { year: 1994, gdpPerCapita: 255,  giniCoefficient: 0.50 },
-    { year: 1995, gdpPerCapita: 263,  giniCoefficient: 0.50 },
-    { year: 1996, gdpPerCapita: 282,  giniCoefficient: 0.50 },
-    { year: 1997, gdpPerCapita: 295,  giniCoefficient: 0.50 },
-    { year: 1998, gdpPerCapita: 278,  giniCoefficient: 0.50 },
-    { year: 1999, gdpPerCapita: 296,  giniCoefficient: 0.50 },
-  // GROWTH ERA — GDP booms again, Gini ALSO keeps rising (the key contradiction)
-    { year: 2000, gdpPerCapita: 378,  giniCoefficient: 0.51 },
-    { year: 2001, gdpPerCapita: 389,  giniCoefficient: 0.51 },
-    { year: 2002, gdpPerCapita: 412,  giniCoefficient: 0.51 },
-    { year: 2003, gdpPerCapita: 468,  giniCoefficient: 0.52 },
-    { year: 2004, gdpPerCapita: 552,  giniCoefficient: 0.52 },
-    { year: 2005, gdpPerCapita: 673,  giniCoefficient: 0.52 },
-    { year: 2006, gdpPerCapita: 802,  giniCoefficient: 0.53 },
-    { year: 2007, gdpPerCapita: 931,  giniCoefficient: 0.53 },
-    { year: 2008, gdpPerCapita: 1118, giniCoefficient: 0.53 },
-    { year: 2009, gdpPerCapita: 1059, giniCoefficient: 0.53 },
-    { year: 2010, gdpPerCapita: 1219, giniCoefficient: 0.54 },
-    { year: 2011, gdpPerCapita: 1428, giniCoefficient: 0.54 },
-    { year: 2012, gdpPerCapita: 1617, giniCoefficient: 0.54 },
-    { year: 2013, gdpPerCapita: 1810, giniCoefficient: 0.55 },
-    { year: 2014, gdpPerCapita: 2042, giniCoefficient: 0.55 },
-  // POST-2015 COLLAPSE — GDP crashes but Gini keeps rising (the cruelest part)
-    { year: 2015, gdpPerCapita: 1596, giniCoefficient: 0.56 },
-    { year: 2016, gdpPerCapita: 1194, giniCoefficient: 0.56 },
-    { year: 2017, gdpPerCapita: 1175, giniCoefficient: 0.57 },
-    { year: 2018, gdpPerCapita: 1246, giniCoefficient: 0.57 },
-    { year: 2019, gdpPerCapita: 1198, giniCoefficient: 0.57 },
-    { year: 2020, gdpPerCapita: 1028, giniCoefficient: 0.58 },
-    { year: 2021, gdpPerCapita: 1107, giniCoefficient: 0.58 },
-    { year: 2022, gdpPerCapita: 1218, giniCoefficient: 0.59 },
-    { year: 2023, gdpPerCapita: 1143, giniCoefficient: 0.59 },
-    { year: 2024, gdpPerCapita: 997,  giniCoefficient: 0.60 },
-    { year: 2025, gdpPerCapita: 1041, giniCoefficient: 0.60 },
-    { year: 2026, gdpPerCapita: 1089, giniCoefficient: 0.61 },
-];
+import { dualAxisData } from "../hooks/transform_data.js";
+import { useState, useEffect } from "react";
 
 const eras = [
     { start: 1960, end: 1969, label: "Independence" },
@@ -111,7 +38,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         <span style={{ fontSize: 11, color: "#94A3B8", display: "flex", alignItems: "center", gap: 5 }}>
                             <span style={{ width: 8, height: 8, borderRadius: 2, background: GDP_COLOR, display: "inline-block" }} /> GDP per Capita
                         </span>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: GDP_COLOR, fontFamily: "monospace" }}>${gdp.value.toLocaleString()}</span>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: GDP_COLOR, fontFamily: "monospace" }}>#{gdp.value.toLocaleString()}</span>
                     </div>
                 )}
                 {gini && (
@@ -130,6 +57,14 @@ const CustomTooltip = ({active, payload, label}) => {
 }
 
 export default function DualAxisChart() {
+    const [combinedData, setCombinedData] = useState([]);
+
+    useEffect(() => {
+        dualAxisData()
+            .then(result => setCombinedData([...result].reverse()))
+            .catch(err => console.error(err));
+    }, [])
+
     return (
         <div style={{
             backgroundColor: "#0B1120",
@@ -137,7 +72,7 @@ export default function DualAxisChart() {
             width: "100%",
             maxWidth: 900,
             boxSizing: "border-box",
-            padding: "28px 12px 20px"  
+            padding: "28px 20px 20px"  
         }}>
             <div style={{marginBottom: 24}}>
                 <div style={{display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12}}>
@@ -155,9 +90,9 @@ export default function DualAxisChart() {
                                 color: "#64748B",
                                 textTransform: "uppercase",
                                 fontWeight: 500
-                            }}>Nierian . Mock Data</span>
+                            }}>Nigeria <small>World bank data</small> </span>
                             <span style={{display: "inline-block",borderRadius: "50%", width: 4, height: 4, backgroundColor: "#22C55E"}}/>
-                            <span style={{fontSize: 11, color: "#22C55E"}}>1960 - 2026</span>
+                            <span style={{fontSize: 11, color: "#22C55E"}}>1976 - 2024</span>
                         </div>
                         <h2 style={{
                             margin: 0,
@@ -197,10 +132,10 @@ export default function DualAxisChart() {
                 </div>
             </div>
             <div style={{
-                width: "100%", height: window.innerWidth < 640 ? 240 : 360  // ← shorter on mobile
+                width: "100%", height: window.innerWidth < 640 ? 240 : 360  
             }}>
                 <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={data}>
+                    <ComposedChart data={combinedData} margin={{ left: 12, right: 12, top: 8, bottom: 8 }}>
 
                         <defs>
                             <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
@@ -211,10 +146,10 @@ export default function DualAxisChart() {
 
                         <CartesianGrid strokeDasharray="2 4" vertical={false}/>
 
-                        <Tooltip content={<CustomTooltip/>} />
+                        <Tooltip content={CustomTooltip}/>
 
                         <XAxis 
-                            dataKey="year" 
+                            dataKey="date" 
                             tick={{ fontSize: window.innerWidth < 640 ? 9 : 14, fill: "#475569", fontFamily: "monospace" }}  
                             tickLine={false} 
                             axisLine={false} 
@@ -226,10 +161,10 @@ export default function DualAxisChart() {
                         orientation="left"
                         tickLine={false}
                         axisLine={false}
-                        tick={{fontSize: 11, fill: GDP_COLOR }}
-                        domain={[50, 2000]}
-                        tickFormatter={(v) => v >=1000 ? `$${(v/1000).toFixed(1)}k` : `$${v}`}
-                        width={48} />
+                        tick={{fontSize: 10, fill: GDP_COLOR }}
+                        domain={['auto', 'auto']}
+                        tickFormatter={(v) => `$${(v / 1e9).toFixed(1)}B`}
+                        width={65} />
 
                         <YAxis 
                         yAxisId="right"
@@ -237,14 +172,16 @@ export default function DualAxisChart() {
                         tickLine={false}
                         axisLine={false}
                         tick={{fontSize: 11, fill: GINI_COLOR }} 
-                        domain={[0.30, 0.55]}
-                        tickFormatter={(v)=> v.toFixed(2)}
+                        domain={[30, 55]}                          
+                        tickFormatter={(v) => v.toFixed(1)} 
                         width={40}/>
-
-                        <Bar yAxisId="left" dataKey="gdpPerCapita" radius={[3, 3, 0, 0]} barSize={9} fill="url(#chartGrad)" name="GDP per Capita" />
-
-                        <Line yAxisId="right" type="monotone" dataKey="giniCoefficient" stroke={GINI_COLOR} strokeWidth={2.5} dot={false} activeDot={{ r: 5, fill: GINI_COLOR, stroke: "#0B1120", strokeWidth: 2 }} name="Gini Coefficient"/>
-
+                        <Line yAxisId="right" type="monotone" dataKey="giniCoefficient" connectNulls={true}  
+                            dot={(props) => {
+                                if (props.value == null) return null;  // skip null points
+                                    return <circle cx={props.cx} cy={props.cy} r={4} fill={GINI_COLOR} stroke="#0B1120" strokeWidth={2} />;
+                            }}  
+                        stroke={GINI_COLOR} strokeWidth={2.5} activeDot={{ r: 5, fill: GINI_COLOR, stroke: "#0B1120", strokeWidth: 2 }} name="Gini Coefficient"/>
+                        <Bar yAxisId="left" dataKey="gdpPerCapita" radius={[3, 3, 0, 0]} barSize={9} fill="url(#chartGrad)" name="gdpPerCapita" />
                         {eras.slice(1).map(e => (
                             <ReferenceLine 
                             key={e.start}
