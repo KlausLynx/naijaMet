@@ -1,8 +1,9 @@
 import {lazy, Suspense, useState, useEffect } from "react";
+import HeroSection from "./pages/HeroSection"
 import { Routes, Route } from "react-router-dom";
 import "../src/index.css"
 import AppNav from "./components/layout/Navbar"
-import HeroSection from "./pages/HeroSection"
+
 const SectionOne = lazy(() => import("./pages/SectionOne"));
 const SectionTwo = lazy(() => import("./pages/SectionTwo"));
 const SectionThree = lazy(() => import("./pages/SectionThree"));
@@ -32,7 +33,7 @@ function App() {
       <AppNav savedAt={savedAt} />  
         <main>
           <HeroSection />
-          <Suspense fallback={<div className="text-center text-white mt-10">Loading...</div>}>
+          <Suspense fallback={<div className="text-center bg-black mt-10"></div>}>
             <Routes>
               <Route path="/lying-averages" element={<SectionOne />} />
               <Route path="/inside-nigeria" element={<SectionTwo />} />

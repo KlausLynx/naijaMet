@@ -2,7 +2,7 @@ import {lazy, Suspense, useState, useEffect  } from "react";
 import HeroLogo from "../assets/hero.webp";
 import{ cards } from "../hooks/usemetrics.js";
 import MetricsCard from "../components/cards/MetricCard";
-const DualAxisChart = lazy(() => import("../components/charts/DualAxisChart"));
+const DualAxisChart = lazy(() => import("../pages/DualAxisChart.jsx"));
 import { nominalGdpData } from "../hooks/transform_data.js";
 
 export default function HeroSection() {
@@ -10,6 +10,14 @@ export default function HeroSection() {
     const [gdpValue, setGdpValue] = useState(null);
     const lastHdiData = cards[0].chartData.findLast(item => item.rank !== null);
     const hdiValue = lastHdiData ? lastHdiData.rank : null;
+    const [showChart, setShowChart] = useState(false);
+
+    // delay heavy stuff
+useEffect(() => {
+    const timer = setTimeout(() => setShowChart(true), 1500);
+    return () => clearTimeout(timer);
+}, []);
+
 
 useEffect(() => {
     const fetchGdpData = async () => {
@@ -80,11 +88,14 @@ useEffect(() => {
                 <MetricsCard mockData={cards} />
             </div>
 
-            {/* CHART */}
-            <div className="flex items-center justify-center w-full">
-                <DualAxisChart />
-            </div>
+            {/* OPTIONAL delayed chart */}
+            {showChart && (
+            <Suspense fallback={<div className="flex items-center justify-center w-full h-64">Loading chart...</div>}>
+                <div className="flex items-center justify-center w-full">
+                    <DualAxisChart />
+                </div>
+            </Suspense>
+            )}
         </div>
-        
     )
 }
