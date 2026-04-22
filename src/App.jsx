@@ -1,15 +1,14 @@
+import {lazy, Suspense, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../src/index.css"
 import AppNav from "./components/layout/Navbar"
 import HeroSection from "./pages/HeroSection"
-import SectionOne from "./pages/SectionOne";
-import SectionTwo from "./pages/SectionTwo";
-import SectionThree from "./pages/SectionThree";
-import SectionFour from "./pages/SectionFour";
-import SectionFive from "./pages/SectionFive";
+const SectionOne = lazy(() => import("./pages/SectionOne"));
+const SectionTwo = lazy(() => import("./pages/SectionTwo"));
+const SectionThree = lazy(() => import("./pages/SectionThree"));
+const SectionFour = lazy(() => import("./pages/SectionFour"));
+const SectionFive = lazy(() => import("./pages/SectionFive"));
 import { transformData } from "./hooks/transform_data";
-import { useState, useEffect } from "react";
-
 
 function App() {
   const [savedAt, setSavedAt] = useState(null);
@@ -33,6 +32,7 @@ function App() {
       <AppNav savedAt={savedAt} />  
         <main>
           <HeroSection />
+          <Suspense fallback={<div className="text-center text-white mt-10">Loading...</div>}>
             <Routes>
               <Route path="/lying-averages" element={<SectionOne />} />
               <Route path="/inside-nigeria" element={<SectionTwo />} />
@@ -40,6 +40,7 @@ function App() {
               <Route path="/growth-for-who" element={<SectionFour />} /> 
               <Route path="/measure-what-matters" element={<SectionFive />} />
             </Routes>
+          </Suspense>
         </main>
     </div>
   );

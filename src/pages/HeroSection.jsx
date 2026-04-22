@@ -1,8 +1,8 @@
-import { useState, useEffect  } from "react"; 
+import {lazy, Suspense, useState, useEffect  } from "react"; 
 import HeroLogo from "../assets/hero.webp";
 import{ cards } from "../hooks/usemetrics.js";
 import MetricsCard from "../components/cards/MetricCard";
-import DualAxisChart from "./DualAxisChart";    
+const DualAxisChart = lazy(() => import("../components/charts/DualAxisChart"));
 import { nominalGdpData } from "../hooks/transform_data.js";
 
 export default function HeroSection() {
