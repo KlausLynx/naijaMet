@@ -96,6 +96,34 @@ export default function SectionTwo() {
     color: getColor(metrics[0]),
   });
 
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  // darker (reduce values)
+  const dark = {
+    r: Math.floor(r * 0.4),
+    g: Math.floor(g * 0.4),
+    b: Math.floor(b * 0.4),
+  };
+
+  // lighter (move toward white)
+  const light = {
+    r: Math.floor(r + (255 - r) * 0.7),
+    g: Math.floor(g + (255 - g) * 0.7),
+    b: Math.floor(b + (255 - b) * 0.7),
+  };
+
+  return {
+    base: { r, g, b },
+    dark,
+    light,
+  };
+}
+
+  const { dark, light } = hexToRgb(selectedMetric.color);
+
   const { pathname } = useLocation();
 
     useEffect(() => {
@@ -257,9 +285,28 @@ export default function SectionTwo() {
                   />
                 </div>
               </div>
-              <div className="flex justify-between mt-1">
-                <span className="text-xs text-gray-400">low</span>
-                <span className="text-xs text-gray-400">high</span>
+              <div className="mt-2">
+                {/* Gradient bar (reversed) */}
+                <div
+                  className="w-full h-2 rounded"
+                  style={{
+                    background: `linear-gradient(to right,
+                      rgb(${dark.r}, ${dark.g}, ${dark.b}),
+                      rgb(${light.r}, ${light.g}, ${light.b})
+                    )`
+                  }}
+                />
+
+                {/* Labels */}
+                <div className="flex justify-between mt-1">
+                  <span className="text-xs text-gray-400">low</span>
+                  <span
+                    className="text-xs"
+                    style={{ color: selectedMetric.color }}
+                  >
+                    high
+                  </span>
+                </div>
               </div>
             </div>
           </article>
