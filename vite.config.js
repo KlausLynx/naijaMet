@@ -5,7 +5,4 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
   plugins: [react(), tailwindcss(),visualizer({ open: true })],
-  server: {
-    open: "/lying-averages"
-  }
 })
