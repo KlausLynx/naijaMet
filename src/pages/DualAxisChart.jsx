@@ -1,6 +1,7 @@
 import { ComposedChart, Legend, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 import { dualAxisData } from "../hooks/transform_data.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+import { formatFigures } from "../hooks/usemetrics.js";
 
 const eras = [
     { start: 1960, end: 1969, label: "Independence" },
@@ -108,7 +109,7 @@ export default function DualAxisChart() {
                     <div style={{display: "flex", flexDirection: "column", gap: 8, alignSelf: "flex-start"}}>
                         <div style={{display: "flex", alignItems: "center", gap: 8}}>
                             <div style={{width: 24, height: 10, borderRadius: 3, background: GDP_COLOR, opacity: 0.85}} />
-                            <span style={{fontSize: 12, color: "#94A3B8"}} >GDP per Capita (USD)</span>
+                            <span style={{fontSize: 12, color: "#94A3B8"}} >GDP per Capita PPP (Naira)</span>
                         </div>
                         <div style={{display: "flex", alignItems: "center", gap: 8}}>
                             <div style={{width: 24, height: 3, borderRadius: 2, backgroundColor: GINI_COLOR, position: "relative"}}>
@@ -163,7 +164,7 @@ export default function DualAxisChart() {
                         axisLine={false}
                         tick={{fontSize: 10, fill: GDP_COLOR }}
                         domain={['auto', 'auto']}
-                        tickFormatter={(v) => `$${(v / 1e9).toFixed(1)}B`}
+                        tickFormatter={(v) => `#${formatFigures(v)}`}
                         width={65} />
 
                         <YAxis 

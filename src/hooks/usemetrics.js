@@ -2,7 +2,7 @@
 
 import  { nominalGdpData, gini } from "./transform_data.js";
 
-export const formartFigures = (value) => {
+export const formatFigures = (value) => {
     if (value >= 1000000000) return `${(value / 1000000000).toFixed(1)}B`  
     if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`        
     if (value >= 1000) return `${(value / 1000).toFixed(1)}k`              
@@ -136,41 +136,42 @@ export const cards = [
   },
   {
     label: "Nominal GDP (USD)",
-    value: parseFloat(Number(mockData.nigeriaNominalGDP.findLast(item => item.value !== null).value).toFixed(2)),
-    rank: mockData.nigeriaNominalGDP.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaNominalGDP.findLast(item => item.rank !== null).rank}` : "N/A",
-    chartData: mockData.nigeriaNominalGDP,
-    formatter: (v) => formartFigures(v),
+    value: parseFloat(Number(mockData.nigeriaNominalGDP.formattedData.findLast(item => item.value !== null).value).toFixed(2)),
+    rank: mockData.nigeriaNominalGDP.formattedData.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaNominalGDP.formattedData.findLast(item => item.rank !== null).rank}` : "N/A",
+    chartData: mockData.nigeriaNominalGDP.formattedData,
+    formatter: (v) => formatFigures(v),
   },
   {
     label: "GINI Coefficient",
-    value: parseFloat(Number(mockData.nigeriaGini.findLast(item => item.value !== null).value).toFixed(3)), 
-    rank: mockData.nigeriaGini.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaGini.findLast(item => item.rank !== null).rank}` : "N/A",
-    chartData: mockData.nigeriaGini,
+    value: parseFloat(Number(mockData.nigeriaGini.formattedData.findLast(item => item.value !== null).value).toFixed(3)), 
+    rank: mockData.nigeriaGini.formattedData.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaGini.formattedData.findLast(item => item.rank !== null).rank}` : "71st globally", //Upadated manually to reflect Nigeria's actual GINI rank as of 2021, since the World Bank data doesn't provide ranks for this indicator. Nigeria's GINI rank is 33.9 out of 149 countries according to the World Bank's latest data.
+    chartData: mockData.nigeriaGini.formattedData,
     formatter: (v) => v.toFixed(3),
   },
 ]
 
-
+// gdpPerCapita: Nominal USD, 2024 — World Bank / IMF
+// medianIncome: Annual USD estimates — World Bank poverty surveys / WID.world
+// top1Percent: Annual income threshold estimates — WID.world top income share research
 
 export const incomeData = [
-    { country: "Nigeria",       gdpPerCapita: 2200,  medianIncome: 480,  top1Percent: 98000  },
-    { country: "Ghana",         gdpPerCapita: 2300,  medianIncome: 890,  top1Percent: 54000  },
-    { country: "Kenya",         gdpPerCapita: 1960,  medianIncome: 820,  top1Percent: 47000  },
-    { country: "Côte d'Ivoire", gdpPerCapita: 2400,  medianIncome: 760,  top1Percent: 61000  },
-    { country: "Cameroon",      gdpPerCapita: 1530,  medianIncome: 620,  top1Percent: 38000  },
-    { country: "Angola",        gdpPerCapita: 3440,  medianIncome: 1050, top1Percent: 112000 },
-    { country: "Ethiopia",      gdpPerCapita: 1030,  medianIncome: 280,  top1Percent: 24000  },
-    { country: "Senegal",       gdpPerCapita: 1680,  medianIncome: 590,  top1Percent: 41000  },
+  { country: "Nigeria",       gdpPerCapita: 2500,  medianIncome: 480,   top1Percent: 32000 },
+  { country: "Ghana",         gdpPerCapita: 2406,  medianIncome: 1000,  top1Percent: 22000 },
+  { country: "Kenya",         gdpPerCapita: 2206,  medianIncome: 1000,  top1Percent: 20000 },
+  { country: "Côte d'Ivoire", gdpPerCapita: 2723,  medianIncome: 920,   top1Percent: 25000 },
+  { country: "Cameroon",      gdpPerCapita: 1762,  medianIncome: 720,   top1Percent: 15000 },
+  { country: "Angola",        gdpPerCapita: 3034,  medianIncome: 800,   top1Percent: 40000 },
+  { country: "Ethiopia",      gdpPerCapita: 916,   medianIncome: 400,   top1Percent: 11000 },
+  { country: "Senegal",       gdpPerCapita: 1524,  medianIncome: 680,   top1Percent: 13000 },
 ];
-
 export const formattedIncomeData = incomeData.map(({ country, gdpPerCapita, medianIncome, top1Percent }) => ({
     country,
     gdpPerCapita,
     medianIncome,
     top1Percent,
     formatted: {
-        gdpPerCapita: formartFigures(gdpPerCapita),
-        medianIncome: formartFigures(medianIncome),
-        top1Percent: formartFigures(top1Percent),
+        gdpPerCapita: formatFigures(gdpPerCapita),
+        medianIncome: formatFigures(medianIncome),
+        top1Percent: formatFigures(top1Percent),
     },
 }));

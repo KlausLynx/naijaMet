@@ -1,8 +1,7 @@
-import MetricsChart from "../charts/MetricsChart";
-export default function MetricsCard({mockData}) {
+export default function Section4Card({data}) {
     return (
         <div className="m-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-            {mockData.map((item, index) => {
+            {data.map((item, index) => {
                 console.log('This is waht au are lookin for', index, item.label, item.chartData)
                 return (
                     <div
@@ -11,26 +10,21 @@ export default function MetricsCard({mockData}) {
                     >
                         {/* LEFT TEXT */}
                         <div className="flex flex-col justify-between gap-1">
-                            <p className="text-xs font-medium tracking-wide uppercase text-[#929292]">
-                            {item.label}
+                            <p className="text-xs font-medium tracking-wide uppercase text-[#E89B3A]">
+                            {item.step}
                             </p>
             
                             <p className="text-2xl font-semibold leading-tight">
-                                {item.formatter ? item.formatter(item.value) : item.value}  
+                                {item.title}  
                             </p>
                 
                             <div className="flex items-center gap-2">
-                                <span className="bg-green-400 rounded-full size-2 inline-block animate-pulse shrink-0" />
-                                <p className="text-xs text-green-400 font-medium">{item.rank}</p>
+                                <p className="text-sm text-[#F0EDE6] leading-loose font-medium">{item.text}</p>
                             </div>
                         </div>
-
-                        {/* CHART */}
-                        <MetricsChart data={item.chartData} label={item.label} formatter={item.formatter} />
-                        
                     </div>
                 )
             })}
-        </div>
+        </div> 
     )
 }

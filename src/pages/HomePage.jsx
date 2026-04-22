@@ -6,7 +6,7 @@ export default function Content () {
     return(
         <>
         <HeroSection />
-        {/* <PageLayout /> */}
+        <PageLayout />
         <SectionOne />
         <SectionTwo />
         </>

@@ -1,0 +1,96 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Lagos",
+                "code": "NG-LA",
+                "region": "South West",
+                "centroid": [3.3792, 6.5244]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[3.0,6.4],[3.4,6.6],[3.7,6.5],[3.5,6.3],[3.0,6.4]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "Kano",
+                "code": "NG-KN",
+                "region": "North West",
+                "centroid": [8.5167, 12.0000]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[8.3,12.0],[8.8,12.2],[9.1,11.9],[8.6,11.7],[8.3,12.0]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "Rivers",
+                "code": "NG-RI",
+                "region": "South South",
+                "centroid": [7.0498, 4.8156]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[6.7,4.6],[7.2,4.8],[7.4,4.5],[7.0,4.3],[6.7,4.6]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "FCT",
+                "code": "NG-FC",
+                "region": "North Central",
+                "centroid": [7.3986, 9.0765]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[7.2,9.2],[7.6,9.3],[7.5,8.9],[7.1,8.8],[7.2,9.2]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "Oyo",
+                "code": "NG-OY",
+                "region": "South West",
+                "centroid": [3.9470, 8.1574]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[3.5,8.5],[4.5,9.0],[5.0,8.3],[4.0,8.0],[3.5,8.5]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "Kaduna",
+                "code": "NG-KD",
+                "region": "North West",
+                "centroid": [7.4381, 10.5264]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[7.0,11.0],[8.0,11.5],[8.5,10.8],[7.5,10.5],[7.0,11.0]]]
+            }
+            },
+            {
+            "type": "Feature",
+            "properties": {
+                "name": "Enugu",
+                "code": "NG-EN",
+                "region": "South East",
+                "centroid": [7.5100, 6.4400]
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[[7.0,6.7],[7.5,6.9],[7.7,6.4],[7.2,6.2],[7.0,6.7]]]
+            }
+        }  
+    ]
+}

@@ -1,5 +1,5 @@
 
-const nigeriaCrudeOilRevenue = [
+export const nigeriaCrudeOilRevenue = [
   { year: 1960, revenueUSDBillion: 0.01 },
   { year: 1961, revenueUSDBillion: 0.02 },
   { year: 1962, revenueUSDBillion: 0.03 },

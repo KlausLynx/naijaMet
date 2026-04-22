@@ -1,38 +1,9 @@
-// ============================================================
-//  Nigeria Economic Data — API Module
-//  Sources: FRED (St. Louis Fed) + World Bank
-// ============================================================
-
-const FRED_API_KEY = '5c525dee708e296757b9ee556ad81e05';
-
-// -----------------------------------------------------------
-//  FRED Series IDs
-// -----------------------------------------------------------
-const FRED_SERIES = {
-    // GDP
-    'Nominal GDP':               'MKTGDPNGA646NWDB',
-    'GDP Per Capita':            'PCAGDPNGA646NWDB',
-    'Real GDP Per Capita':       'NYGDPPCAPKDNGA',
-    'GDP Growth':                'NGANGDPRPCPPPT',
-    'Real Non-Oil GDP':          'NGANGDPXORPCPPPT',
-    'Real Effective Exchange Rate': 'NGAEREERIX',
-    'Real GDP Per Capita (NGN)': 'NGANGDPRPCPCPPPT',
-
-    // Inflation
-    'CPI Inflation (%)':         'FPCPITOTLZGNGA',
-
-    // Population
-    'Population Growth (%)':     'SPPOPGROWNGA',
-    'Population Total':          'POPTOTNGA647NWDB',
-
-    // Inequality
-    'GINI Coefficient':          'SIPOVGININGA',
-};
+import { getFromLocalStorage, saveToLocalStorage } from './api.js';
 
 // -----------------------------------------------------------
 //  World Bank Indicator URLs
 // -----------------------------------------------------------
-    const BASE = 'https://api.worldbank.org/v2/country/NG/indicator';
+const BASE = 'https://api.worldbank.org/v2/country/NG/indicator';
 
 const WB_INDICATORS = {
     'Electricity Access (%)':                  `${BASE}/EG.ELC.ACCS.ZS?format=json`,
@@ -54,12 +25,13 @@ const WB_INDICATORS = {
     'GDP Per Capita Growth':                   `${BASE}/NY.GDP.PCAP.KD.ZG?format=json`,
     'GDP Per Capita':                          `${BASE}/NY.GDP.PCAP.KN?format=json`,
     'ALL Country GDP':                         `https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&mrv=50&per_page=20000`,
+    'Real Effective Exchange Rate':            `${BASE}/PX.REX.REER?format=json`
 };
 
 
 async function fetchWorldBankData() {
     try {
-        const [electricityRes, populationRes, selfEmpRes, youthUnempRes, unempRes, hdiRes, oilRentsRes, importsRes, agriRes, indRes, srvRes, manufRes, giniRes, nominalRes, realRes, gdpGrowthRes, gdpPerCapRes, allGdpRes] = await Promise.all([
+        const [electricityRes, populationRes, selfEmpRes, youthUnempRes, unempRes, hdiRes, oilRentsRes, importsRes, agriRes, indRes, srvRes, manufRes, giniRes, nominalRes, realRes, gdpGrowthRes, gdpPerCapRes, allGdpRes, realExchangeRes] = await Promise.all([
             fetch(WB_INDICATORS['Electricity Access (%)']).then(res => {
                 if (!res.ok) throw new Error(res.statusText);
                 return res.json();
@@ -132,6 +104,10 @@ async function fetchWorldBankData() {
                 if (!res.ok) throw new Error(res.statusText);
                 return res.json();
             }),
+                fetch(WB_INDICATORS['Real Effective Exchange Rate']).then( res => {
+                if (!res.ok) throw new Error(res.statusText);
+                return res.json();
+            })
         ]);
         return { 
             'Electricity Access (%)': electricityRes[1],
@@ -152,19 +128,25 @@ async function fetchWorldBankData() {
             'GDP Growth Rate (annual %)': gdpGrowthRes[1],
             'GDP Per Capita': gdpPerCapRes[1],
             'ALL Country GDP': allGdpRes[1],
+            'Real Effective Exchange Rate': realExchangeRes[1]
 
         };  
     } catch(err) {
-        console.log(err);
+        console.error(err);
     }
 }
 
 export async function main() {
     try {
-        const result = await fetchWorldBankData();
-        console.log('main result:', result); // temporary, delete later
-        return result;
+        const result = getFromLocalStorage();
+        if (result.status === "ok") {
+            return { value: result.value, savedAt: result.savedAt };
+        } else {
+            const fetchedData = await fetchWorldBankData()
+            saveToLocalStorage(fetchedData)
+            return { value: fetchedData, savedAt: Date.now() } 
+        }
     } catch (error) {
-        console.error('main() crashed:', error);
+        console.error('main() crashed:', error)
     }
 }

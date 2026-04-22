@@ -1,25 +1,32 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 const NAV_LINKS = [
-    { label: "Lying Averages", path: "/Lying Averages" },
-    { label: "Inside Nigeria", path: "/Inside Nigeria" },
-    { label: "The Hidden Half", path: "/The Hidden Half" },
-    { label: "Growth for Who?", path: "/Growth for Who?" },
-    { label: "Measure What Matters", path: "/Measure What Matters" },
+    { label: "Lying Averages",       path: "/lying-averages" },
+    { label: "Inside Nigeria",       path: "/inside-nigeria" },
+    { label: "The Hidden Half",      path: "/the-hidden-half" },
+    { label: "Growth for Who?",      path: "/growth-for-who" },
+    { label: "Measure What Matters", path: "/measure-what-matters" },
 ];
 
-export default function AppNavBar() {
-    const location = useLocation();
-    // eslint-disable-next-line
-    const [lastUpdated, setLastUpdated] = useState(null);
-    const [loading, setLoading] = useState(false); //eslint-disable-line
+export default function AppNavBar({savedAt}) {
     const [menuOpen, setMenuOpen] = useState(false);
+    
+    const lastUpdated = savedAt
+        ? new Date(savedAt).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+        })
+        : null;
+
+        const loading = !lastUpdated;
 
     return (
         <nav className="border-b border-gray-700 bg-transparent px-6 py-3">
             <div className="flex items-center justify-between">
+                {/* React Hook useEffect has an unneccessary dependancy" 'savedAt'. Either exclude it or remove the dependency array. Outer scope values like 'savedAt' arent values dependencies because mutating them doesn't re-render the component. */}
 
                 {/* Logo */}
                 <Link to="/">
@@ -29,17 +36,18 @@ export default function AppNavBar() {
                 {/* Desktop Nav Links */}
                 <div className="hidden md:flex items-center gap-2">
                     {NAV_LINKS.map((link) => (
-                        <Link
+                        <NavLink
                             key={link.path}
                             to={link.path}
-                            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
-                                ${location.pathname === link.path
+                            end={link.path === "/"}
+                            className={({ isActive }) => `px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                                ${isActive
                                     ? "text-green-400 border-b-2 border-green-400"
                                     : "text-gray-300 hover:text-green-400 hover:bg-gray-800"
                                 }`}
                         >
                             {link.label}
-                        </Link>
+                        </NavLink>
                     ))}
                 </div>
 
@@ -72,18 +80,18 @@ export default function AppNavBar() {
             {menuOpen && (
                 <div className="md:hidden mt-3 flex flex-col gap-1 pb-3">
                     {NAV_LINKS.map((link) => (
-                        <Link
+                        <NavLink
                             key={link.path}
                             to={link.path}
                             onClick={() => setMenuOpen(false)}
-                            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
-                                ${location.pathname === link.path
+                            className={({ isActive }) => `px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                                ${isActive
                                     ? "text-green-400 bg-gray-800 border-l-4 border-green-400"
                                     : "text-gray-300 hover:text-green-400 hover:bg-gray-800"
                                 }`}
                         >
                             {link.label}
-                        </Link>
+                        </NavLink>
                     ))}
 
                     {/* Timestamp on mobile too */}

@@ -1,76 +1,70 @@
-
-const cache = {};
+export const cache = {};
 const LOCAL_STORAGE_KEY = "local_Data"; 
 const TWO_WEEKS = 14 * 24 * 60 * 60 * 1000;
 const WEB_CACHE_NAME = "web_cache";
 const WEB_CACHE_KEY = "web_cache_key";
 
-const data = {
-    api1: { name: "John Doe", age: 30 },
-    api2: { name: "Jane Doe", age: 25 }
-}
-
-function saveToCache(main_data) {
+export function saveToCache(main_data) {
     if (Object.keys(cache).length === 0) {
+        cache.data = {}             
+        cache.savedAt = Date.now()  
+
         for (const key in main_data) {
-            cache[key] = main_data[key];
+            cache.data[key] = main_data[key]
         }
-        cache.savedAt = Date.now();
-        return cache;
+        return cache
     } else {
-        return JSON.stringify(cache, null, 2); 
+        return JSON.stringify(cache, null, 2)
     }
 }
 
-console.log(saveToCache(data));
-
-function getFromCache(cache_data) {
-    if (Object.keys(cache_data).length === 0) {
+export function getFromCache(cache_data) {
+    if (Object.keys(cache).length === 0) {
         return getFromLocalStorage(); 
-    } else if (Date.now() - cache_data.savedAt < TWO_WEEKS) {
-        return JSON.stringify(cache_data, null, 2);
+    } else if (Date.now() - cache.savedAt < TWO_WEEKS) {
+        return { data: cache.data, savedAt: cache.savedAt }  
     } else {
-        for (const key in cache) {
+        for (const key in cache_data) {
             delete cache[key];
         }
         return "Cache has expired";
     }
 }
 
-console.log(getFromCache(cache));
-
-function saveToLocalStorage(local_Data) {
+export function saveToLocalStorage(local_Data) {
     const toSave = { value: local_Data, savedAt: Date.now() };
     const savedToLocalStorage = JSON.stringify(toSave);
     try {
         localStorage.setItem(LOCAL_STORAGE_KEY, savedToLocalStorage); 
-        return "Saved to Local Storage";
+        saveToCache(toSave);
+        saveToWebCache(toSave);
+        return savedToLocalStorage;
     } catch(err) {
         return err;
     }
 }
 
-console.log(saveToLocalStorage(data));
 
-function getFromLocalStorage() {
+
+export function getFromLocalStorage() {
     try {
         const item = localStorage.getItem(LOCAL_STORAGE_KEY)
         if (!item) {
-            return "Local Storage is Empty — try WebCache";
+            getFromWebCache();
+            return { status: "empty" };
         }
-        const { savedAt, ...value } = JSON.parse(item);
+        const { savedAt, value } = JSON.parse(item);
         if (Date.now() - savedAt < TWO_WEEKS) {
-            return value;    
+            return { status: "ok", value, savedAt };
         } else {
             localStorage.removeItem(LOCAL_STORAGE_KEY);
-            return "Cache has expired";
+            return { status: "expired" };
         }
     } catch(err) {
-        return err;
+        return { status: "error", error: err };
     }
 }
 
-console.log(getFromLocalStorage());
 
 async function saveToWebCache(data) {
     try {
@@ -85,7 +79,7 @@ async function saveToWebCache(data) {
 
 }
 
-async function getFromWebCachr(data){
+async function getFromWebCache(){
     try {
         const webCache = await caches.open(WEB_CACHE_NAME);
         if(webCache.has(WEB_CACHE_KEY)) {

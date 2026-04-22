@@ -2,7 +2,7 @@ const modalContent = {
     "Gdp Per Capita": {
         title: "GDP Per Capita",
         subtitle: "The metric that papers over inequality",
-        stat: "$2,200",
+        stat: "$2,450",
         statLabel: "Nigeria's official GDP per capita",
         body: [
         "GDP per capita is calculated by dividing a country's total economic output by its population. On paper, this gives every Nigerian $2,200 a year. In practice, it tells you almost nothing about how most Nigerians actually live.",
@@ -28,7 +28,7 @@ const modalContent = {
     "Median Income": {
         title: "Median Income",
         subtitle: "The number that actually tells the story",
-        stat: "$490",
+        stat: "~$480",
         statLabel: "Nigeria's true median income per year",
         body: [
         "The median income finds the person sitting exactly in the middle of Nigeria's income ladder — with half the country earning more and half earning less. That person earns approximately $490 a year. That is the real number.",

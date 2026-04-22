@@ -4,7 +4,9 @@ import {
   BarChart, Bar, CartesianGrid, XAxis, YAxis,
   ResponsiveContainer, Tooltip,
 } from "recharts";
-import { formattedIncomeData, formartFigures } from "../hooks/usemetrics";
+import { formattedIncomeData, formatFigures } from "../hooks/usemetrics";
+import HeroSection from "./HeroSection";
+
 
 /* ─── Custom Tooltip ──────────────────────────────────────────── */
 function CustomTooltip({ active, payload, label }) {
@@ -24,16 +26,17 @@ function CustomTooltip({ active, payload, label }) {
       <p style={{ color: "#929292", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
         {label}
       </p>
-      {payload.map(entry => (
+      {payload.map(entry => {
+        return (
         <div key={entry.dataKey} style={{ display: "flex", justifyContent: "space-between", gap: 16, marginBottom: 4 }}>
           <span style={{ color: colors[entry.dataKey] || entry.fill, fontSize: 12 }}>
             {names[entry.dataKey] || entry.dataKey}
           </span>
           <span style={{ color: "#fff", fontSize: 12, fontWeight: 700 }}>
-            {formartFigures ? formartFigures(entry.value) : `$${entry.value}`}
+            {formatFigures ? formatFigures(entry.value) : `$${entry.value}`}
           </span>
         </div>
-      ))}
+      )})}
     </div>
   );
 }
@@ -212,6 +215,7 @@ function Modal({ view, onClose }) {
 export default function SectionOne() {
   const [activeView, setActiveView] = useState(null);
 
+
   const AverageIndicatior = [
     { label: "Gdp Per Capita" },
     { label: "Top One Person" },
@@ -231,7 +235,7 @@ export default function SectionOne() {
   }, [activeView]);
 
   return (
-    <div>
+    <div id="lying-averages">
       <div className="mx-4 sm:mx-10 mt-10 pb-10 flex flex-col">
 
         {/* Section divider */}
@@ -257,18 +261,18 @@ export default function SectionOne() {
           {/* ── Sub-heading ── */}
           <section>
             <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">
-              Nigeria earns $2,200 a year — except almost nobody does
+              Nigeria earns ~$2,450 a year — except almost nobody does
             </h3>
             <p className="text-[#F0EDE6] leading-relaxed text-sm">
               <span className="underline decoration-dotted decoration-2 decoration-amber-400 underline-offset-8">
                 GDP Per Capita: A Misleading Metric for Nigeria
               </span>
               <br /><br />
-              Nigeria's GDP per capita of ~$2,200, cited by the World Bank and media. It is mathematically accurate
+              Nigeria's GDP per capita of ~$2,450, cited by the World Bank, IMF and media. It is mathematically accurate
               but practically meaningless for most Nigerians. Because it divides total national income evenly across
               the population, it gets severely distorted by a small wealthy elite.{" "}
               <strong><em>The real picture: </em></strong>
-              the median Nigerian earns closer to $490 a year — less than a quarter of the headline figure.
+              the median Nigerian earns closer to ~$480 a year — less than a quarter of the headline figure.
               For 200+ million people, the average tells almost none of their story.
             </p>
           </section>
@@ -323,7 +327,7 @@ export default function SectionOne() {
                   <YAxis
                     yAxisId="left"
                     orientation="left"
-                    tickFormatter={formartFigures}
+                    tickFormatter={formatFigures}
                     tick={{ fontSize: 10, fill: "#929292" }}
                     tickLine={false}
                     axisLine={false}
@@ -333,7 +337,7 @@ export default function SectionOne() {
                   <YAxis
                     yAxisId="right"
                     orientation="right"
-                    tickFormatter={formartFigures}
+                    tickFormatter={formatFigures}
                     domain={["auto", "auto"]}
                     tick={{ fontSize: 10, fill: TOP_ONE_FILL }}
                     tickLine={false}
@@ -365,10 +369,10 @@ export default function SectionOne() {
               }}
             >
               <span className="text-5xl sm:text-6xl leading-none text-[#F0EDE6] opacity-40 font-serif">&ldquo;</span>
-              <p className="text-[#F0EDE6] text-sm sm:text-base italic leading-relaxed -mt-2">
-                The median Nigerian earns far, far less than $2,200. The average is mathematically real — but economically meaningless.
-              </p>
-              <p className="text-[#929292] text-xs mt-3 tracking-widest uppercase">The Averages Problem — Section 1</p>
+              <blockquote className="text-[#F0EDE6] text-sm sm:text-base italic leading-relaxed -mt-2">
+                The median Nigerian earns far, far less than $2,450. The average is mathematically real — but economically meaningless.
+              </blockquote>
+              <footer className="text-[#929292] text-xs mt-3 tracking-widest uppercase">The Averages Problem — Section 1</footer>
             </div>
 
             <div className="mt-6 space-y-4">
@@ -403,11 +407,11 @@ export default function SectionOne() {
             >
               <span className="text-5xl sm:text-6xl leading-none text-[#F0EDE6] opacity-40 font-serif">&ldquo;</span>
               <p className="text-white font-semibold text-sm sm:text-base -mt-2 mb-3">Why this matters beyond statistics</p>
-              <p className="text-[#F0EDE6] text-sm leading-relaxed">
-                A poverty programme calibrated to "$2,200 per person" is sized for a Nigeria that does not exist.
+              <q className="text-[#F0EDE6] text-sm leading-relaxed">
+                A poverty programme calibrated to "$2,450 per person" is sized for a Nigeria that does not exist.
                 Infrastructure investment justified by "average income growth" may be building for the 1%, not the 99%.
                 Every policy decision that begins with the average is, silently, a decision that ignores the median.
-              </p>
+              </q>
             </div>
           </section>
 
