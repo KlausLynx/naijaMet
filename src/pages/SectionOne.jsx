@@ -1,11 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
+import HeroSection from "./HeroSection";
 import { modalContent } from "../data/ModalData";
+import { useScrollToTop } from "../utils/ScrolltoTop";
 import {
   BarChart, Bar, CartesianGrid, XAxis, YAxis,
   ResponsiveContainer, Tooltip,
 } from "recharts";
 import { formattedIncomeData, formatFigures } from "../hooks/usemetrics";
-import HeroSection from "./HeroSection";
+
 
 
 /* ─── Custom Tooltip ──────────────────────────────────────────── */
@@ -214,7 +216,11 @@ function Modal({ view, onClose }) {
 /* ─── Main Component ──────────────────────────────────────────── */
 export default function SectionOne() {
   const [activeView, setActiveView] = useState(null);
+  const [loading, setLoading] = useState(false); //eslint-disable-line no-unused-vars
 
+  const scrollTOTop = useScrollToTop();
+  
+  if (loading) scrollTOTop();
 
   const AverageIndicatior = [
     { label: "Gdp Per Capita" },
