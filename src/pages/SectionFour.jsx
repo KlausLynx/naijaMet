@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { useScrollToTop } from "../utils/ScrolltoTop";
 import { STEPS, DATA, regionFilters, policyUpdates, keyChallenges, sources, getStatCards } from "../data/Section4Data";
 import Section4Card from "../components/cards/Section4Card";
 import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ReferenceLine } from "recharts";
 
 // ── Region Color Styling ──────────────────────────────────────────────────────
 const COLORS = {
-  southSouth: { dot: "#c0392b", label: "South-South / Niger Delta", fill: "#c0392b22" },
-  southWest:  { dot: "#2471a3", label: "South-West / FCT",          fill: "#2471a322" },
-  southEast:  { dot: "#1a7a4a", label: "South-East",                fill: "#1a7a4a22" },
-  north:      { dot: "#7d6608", label: "North",                     fill: "#7d660822" },
+    southSouth: { dot: "#c0392b", label: "South-South / Niger Delta", fill: "#c0392b22" },
+    southWest:  { dot: "#2471a3", label: "South-West / FCT",          fill: "#2471a322" },
+    southEast:  { dot: "#1a7a4a", label: "South-East",                fill: "#1a7a4a22" },
+    north:      { dot: "#7d6608", label: "North",                     fill: "#7d660822" },
 };
 
 // ── Custom Tooltip ────────────────────────────────────────────────────────────
@@ -55,6 +56,11 @@ export default function SectionFour() {
 
     const rawData      = DATA[year];
     const filteredData = filter === "all" ? rawData : rawData.filter(d => d.region === filter);
+
+    const [loading, setLoading] = useState(false); //eslint-disable-line
+    const scrollTOTop = useScrollToTop();
+    
+    if (loading) scrollTOTop();
 
     const captureStates     = rawData.filter(d => d.oil && d.poverty > 60).sort((a, b) => b.gdp - a.gdp).slice(0, 5);
     const avgCapturePoverty = (captureStates.reduce((s, d) => s + d.poverty, 0) / captureStates.length).toFixed(1);
