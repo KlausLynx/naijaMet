@@ -7,6 +7,10 @@ const BASE = import.meta.env.PROD
     ? 'https://api.worldbank.org/v2/country/NG/indicator'
     : '/wb/v2/country/NG/indicator';
 
+const ALL_BASE = import.meta.env.PROD
+    ? 'https://api.worldbank.org/v2/country/all/indicator'
+    : '/wb/v2/country/all/indicator';
+
 const WB_INDICATORS = {
     'Electricity Access (%)':                  `${BASE}/EG.ELC.ACCS.ZS?format=json`,
     'Population Total':                        `${BASE}/SP.POP.TOTL?format=json`,
@@ -26,7 +30,7 @@ const WB_INDICATORS = {
     'GDP Growth Rate (annual %)':              `${BASE}/NY.GDP.MKTP.KD.ZG?format=json`,
     'GDP Per Capita Growth':                   `${BASE}/NY.GDP.PCAP.KD.ZG?format=json`,
     'GDP Per Capita':                          `${BASE}/NY.GDP.PCAP.KN?format=json`,
-    'ALL Country GDP':                         `/wb/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&mrv=50&per_page=20000`,
+    'ALL Country GDP':                         `${ALL_BASE}/NY.GDP.MKTP.CD?format=json&mrv=50&per_page=20000`,
     'Real Effective Exchange Rate':            `${BASE}/PX.REX.REER?format=json`
 };
 
