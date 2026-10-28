@@ -3,7 +3,7 @@ import { getFromLocalStorage, saveToLocalStorage } from './api.js';
 // -----------------------------------------------------------
 //  World Bank Indicator URLs
 // -----------------------------------------------------------
-const BASE = 'https://api.worldbank.org/v2/country/NG/indicator';
+const BASE = '/wb/v2/country/NG/indicator';;
 
 const WB_INDICATORS = {
     'Electricity Access (%)':                  `${BASE}/EG.ELC.ACCS.ZS?format=json`,
@@ -24,7 +24,7 @@ const WB_INDICATORS = {
     'GDP Growth Rate (annual %)':              `${BASE}/NY.GDP.MKTP.KD.ZG?format=json`,
     'GDP Per Capita Growth':                   `${BASE}/NY.GDP.PCAP.KD.ZG?format=json`,
     'GDP Per Capita':                          `${BASE}/NY.GDP.PCAP.KN?format=json`,
-    'ALL Country GDP':                         `https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&mrv=50&per_page=20000`,
+    'ALL Country GDP':                         `/wb/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&mrv=50&per_page=20000`,
     'Real Effective Exchange Rate':            `${BASE}/PX.REX.REER?format=json`
 };
 
@@ -109,6 +109,7 @@ async function fetchWorldBankData() {
                 return res.json();
             })
         ]);
+        console.log('World Bank data fetched successfully');
         return { 
             'Electricity Access (%)': electricityRes[1],
             'Population Total': populationRes[1],
@@ -140,9 +141,12 @@ export async function main() {
     try {
         const result = getFromLocalStorage();
         if (result.status === "ok") {
+            console.log('Data retrieved from local storage is valid:', result);
             return { value: result.value, savedAt: result.savedAt };
         } else {
+            console.log('Data not found in local storage or is invalid, fetching from World Bank API...');
             const fetchedData = await fetchWorldBankData()
+            console.log('Fetched data:', fetchedData)
             saveToLocalStorage(fetchedData)
             return { value: fetchedData, savedAt: Date.now() } 
         }

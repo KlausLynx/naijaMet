@@ -18,8 +18,9 @@ function App() {
     async function fetchData() {
       const { savedAt } = await transformData();
       setSavedAt(savedAt);
+      console.log('Data fetched and savedAt state updated:', savedAt);
     }
-    fetchData();
+    console.log('This is the first function called',fetchData());
   }, []);
   return (
     <div className="App" 

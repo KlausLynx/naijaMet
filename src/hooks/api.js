@@ -44,16 +44,18 @@ export function saveToLocalStorage(local_Data) {
     }
 }
 
-
-
 export function getFromLocalStorage() {
     try {
         const item = localStorage.getItem(LOCAL_STORAGE_KEY)
+        console.log('Retrieved item from local storage:', LOCAL_STORAGE_KEY, item);
         if (!item) {
             getFromWebCache();
             return { status: "empty" };
         }
         const { savedAt, value } = JSON.parse(item);
+        if (!savedAt || !value) {
+            return { status: "invalid" };
+        }
         if (Date.now() - savedAt < TWO_WEEKS) {
             return { status: "ok", value, savedAt };
         } else {
@@ -64,7 +66,6 @@ export function getFromLocalStorage() {
         return { status: "error", error: err };
     }
 }
-
 
 async function saveToWebCache(data) {
     try {

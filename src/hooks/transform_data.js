@@ -2,8 +2,7 @@ import { main } from "./nigeria_data_api.js";
 export async function transformData() {
     try {
         const { value: data, savedAt } = await main(); 
-
-        // Step 1: Build rank lookup from all countries GDP — once, upfront
+        console.log('Data fetched from main():', savedAt, data);
         const rankLookup = {};
         const yearMap = {};
 

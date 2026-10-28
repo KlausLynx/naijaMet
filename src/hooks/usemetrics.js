@@ -136,16 +136,16 @@ export const cards = [
   },
   {
     label: "Nominal GDP (USD)",
-    value: parseFloat(Number(mockData.nigeriaNominalGDP.formattedData.findLast(item => item.value !== null).value).toFixed(2)),
-    rank: mockData.nigeriaNominalGDP.formattedData.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaNominalGDP.formattedData.findLast(item => item.rank !== null).rank}` : "N/A",
-    chartData: mockData.nigeriaNominalGDP.formattedData,
+    value: parseFloat(Number(mockData?.nigeriaNominalGDP?.formattedData?.findLast(item => item.value !== null).value).toFixed(2)) || 2500,
+    rank: mockData?.nigeriaNominalGDP?.formattedData?.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaNominalGDP.formattedData.findLast(item => item.rank !== null).rank}` : "N/A",
+    chartData: mockData?.nigeriaNominalGDP?.formattedData,
     formatter: (v) => formatFigures(v),
   },
   {
     label: "GINI Coefficient",
-    value: parseFloat(Number(mockData.nigeriaGini.formattedData.findLast(item => item.value !== null).value).toFixed(3)), 
-    rank: mockData.nigeriaGini.formattedData.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaGini.formattedData.findLast(item => item.rank !== null).rank}` : "71st globally", //Upadated manually to reflect Nigeria's actual GINI rank as of 2021, since the World Bank data doesn't provide ranks for this indicator. Nigeria's GINI rank is 33.9 out of 149 countries according to the World Bank's latest data.
-    chartData: mockData.nigeriaGini.formattedData,
+    value: parseFloat(Number(mockData?.nigeriaGini?.formattedData?.findLast(item => item.value !== null).value).toFixed(3)) || 0.400,
+    rank: mockData?.nigeriaGini?.formattedData?.findLast(item => item.rank !== null).rank ? `Rank ${mockData.nigeriaGini.formattedData.findLast(item => item.rank !== null).rank}` : "71st globally", //Updated manually to reflect Nigeria's actual GINI rank as of 2021, since the World Bank data doesn't provide ranks for this indicator. Nigeria's GINI rank is 33.9 out of 149 countries according to the World Bank's latest data.
+    chartData: mockData?.nigeriaGini?.formattedData,
     formatter: (v) => v.toFixed(3),
   },
 ]

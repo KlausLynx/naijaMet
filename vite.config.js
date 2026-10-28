@@ -4,5 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(),visualizer({ open: true })],
+  plugins: [react(), tailwindcss(), visualizer({ open: true })], 
+  server: {
+    proxy: {
+      '/wb': {
+        target: 'https://api.worldbank.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/wb/, ''),
+      },
+    },
+  },
 })
