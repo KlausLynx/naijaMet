@@ -3,7 +3,9 @@ import { getFromLocalStorage, saveToLocalStorage } from './api.js';
 // -----------------------------------------------------------
 //  World Bank Indicator URLs
 // -----------------------------------------------------------
-const BASE = '/wb/v2/country/NG/indicator';;
+const BASE = import.meta.env.PROD
+    ? 'https://api.worldbank.org/v2/country/NG/indicator'
+    : '/wb/v2/country/NG/indicator';
 
 const WB_INDICATORS = {
     'Electricity Access (%)':                  `${BASE}/EG.ELC.ACCS.ZS?format=json`,
