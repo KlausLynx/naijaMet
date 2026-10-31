@@ -14,11 +14,12 @@
       "NBS — CPI Monthly Reports Jan–Dec 2024 (state-level food CPI YoY annual averages, old base 2009=100). Published monthly. State tables in each NBS CPI release.",
       "NBS — General Household Survey-Panel Wave 5 (2023/24), published Nov 2024 (NBS + World Bank LSMS). National electricity access: 53.6%; Urban: 82.2%; Rural: 40.4%. Zonal breakdown: SE=74.6%, SW=72.6%, SS=64.2%, NC=52.1%, NE=29.5%, NW=38.4%. State-level figures ESTIMATED from zonal averages calibrated to each state's urban/rural population ratio.",
       "NBS/DMO — Nigerian Domestic & Foreign Debt Q2 2024 (published Nov 2024). Exact domestic and external debt per state. CBN Q2 2024 rate ~₦1,470/$1 used for naira conversion of external debt.",
-      "NBS — CPI Monthly Reports 2024 (headline/all-items inflation, state annual averages, old base 2009=100). National 2024 avg ~33.2%. Rebased to 2024=100 from Jan 2025."
+      "NBS — CPI Monthly Reports 2024 (headline/all-items inflation, state annual averages, old base 2009=100). National 2024 avg ~33.2%. Rebased to 2024=100 from Jan 2025.",
+      "DMO — States and FCT Domestic Debt Stock as at 30 June 2026 and States/FCT External Debt Stock as at 30 June 2026 (published 25 Sep 2026). CBN rate ₦1,379.1842/$1 at 30 Jun 2026.",
+      "NBS — GDP Reports Q1–Q4 2025 (rebased, 2019 base year). 2025 real growth 3.87%; nominal GDP sum of quarters ₦431.18tn.",
+      "NBS — Labour Force Survey Q2 2024 national headline (4.3%). State rates still from 2023 annual report."
     ],
     "notes": [
-      "GDP figures are BudgIT 2022 estimates in ₦ trillion, adjusted for 2023/2024 nominal growth.",
-      "% Nationally = state GDP as % of total Nigerian nominal GDP (~₦210tn in 2024).",
       "GDP YoY is estimated % change based on NBS national sector trends and state economic profiles.",
       "Population YoY is estimated from NPC intercensal projections (2006 census base, 2023 projections).",
       "Unemployment rates sourced from NBS Labour Force Survey 2023 (state-level annual estimates).",
@@ -30,8 +31,13 @@
       "electricity_access_pct: % households with electricity access. NBS GHS-Panel W5 (2023/24) gives zonal figures only. State values are ESTIMATED using zonal averages anchored to state urban/rural ratios. Not directly published by NBS per state.",
       "Inflation ≠ Food inflation. Inflation (headline) covers ALL goods/services. Food inflation covers food items only (52% of basket). In 2024, national headline ~33.2% vs food inflation ~37-40%. State headline figures are ESTIMATED annual averages.",
       "Investment flow in USD millions. VERIFIED only for Lagos ($2,780m) and FCT ($593.6m) from NBS Capital Importation Q1 2024. Ekiti ($12.75m) is a PROXY from same report. All other states are ESTIMATED — NBS only names 2-3 states per quarter report.",
-      "total_debt: domestic debt is exact from NBS/DMO Q2 2024 (₦bn). External debt is exact in USD from same report. total_naira_bn is calculated using CBN Q2 2024 rate of ~₦1,470/$1.",
-      "investment_flow_mn_usd: All values are in USD millions (mn). Example: Lagos=2780.0mn USD = $2.78bn. FCT=593.6mn USD = $0.59bn. Rivers=320.0mn USD. Benue=8.0mn USD = $8,000,000."
+      "investment_flow_mn_usd: All values are in USD millions (mn). Example: Lagos=2780.0mn USD = $2.78bn. FCT=593.6mn USD = $0.59bn. Rivers=320.0mn USD. Benue=8.0mn USD = $8,000,000.",
+      "REFRESH 2026-10: UPDATED = state debt (DMO 30 Jun 2026), state GDP (rescaled to rebased 2025 nominal GDP), national GDP/growth/unemployment. NOT REFRESHED (no newer state-level data obtained) = MPI, food_inflation_pct, Inflation, electricity_access_pct, investment_flow_mn_usd, Infrastructure Score, IGR split, state GDP growth, state unemployment, population.",
+      "gdp_naira_tn: state share (pct_nationally, from BudgIT 2022) × ₦431.18tn (NBS 2025 nominal GDP, 2019 base). pct_nationally is unchanged; the 37 shares sum to ~90.6% as before. GDP is much larger than the older file (₦210tn) because NBS rebased GDP in 2025.",
+      "total_debt: domestic ₦bn and external US$mn are from DMO files as at 30 Jun 2026 (external provisional). total_naira_bn = domestic + external × ₦1,379.18/$1. Totals: domestic ₦4,591.28bn, external US$6,832.80m. Anambra and FCT domestic values flagged for possible carry-forward/typo.",
+      "Inflation / food_inflation_pct are STALE: 2024 annual averages on the OLD CPI base (2009=100). NBS rebased CPI (2024=100) from Jan 2025, headline inflation Sep 2026 = 14.63%, food 19.59%. New-base state data are not comparable with these columns; a full 37-state table was not obtainable.",
+      "MPI: NBS National MPI 2022 remains the latest NBS state-level estimate. Separately, the UNDP/OPHI Global MPI 2026 update (Oct 2026) reports a Nigeria national incidence of 38.7% for 2024 (different methodology; no per-state values obtained).",
+      "investment_flow_mn_usd: still Q1 2024 NBS values for Lagos/FCT/Ekiti and estimates elsewhere. NBS Q4 2025 and Q1 2026 reports exist (Q1 2026 total $10.37bn, 95% portfolio) but their state destination tables could not be read."
     ],
     "updates": {
       "metrics": [
@@ -49,11 +55,31 @@
         "annual",
         "irregular",
         "irregular"
-      ]
+      ],
+      "refresh_log_2026_10": {
+        "updated": [
+          "total_debt",
+          "gdp_naira_tn",
+          "national_aggregates (GDP, growth, unemployment)"
+        ],
+        "not_updated": [
+          "MPI",
+          "food_inflation_pct",
+          "Inflation",
+          "electricity_access_pct",
+          "investment_flow_mn_usd",
+          "Infrastructure Score",
+          "igr_sector",
+          "GDP Growth %",
+          "Unemployment Rate %",
+          "Population Growth %",
+          "population_est_mn"
+        ]
+      }
     },
-    "last_updated": "2024-Q4",
+    "last_updated": "2026-10",
     "currency": "NGN (₦)",
-    "data_year": "2023-2024"
+    "data_year": "2023-2026 (mixed — see notes; debt Jun 2026, GDP 2025, other metrics unchanged)"
   },
   "states": [
     {
@@ -61,7 +87,7 @@
       "state": "Lagos",
       "geopolitical_zone": "South West",
       "capital": "Ikeja",
-      "gdp_naira_tn": 61.17,
+      "gdp_naira_tn": 125.47,
       "pct_nationally": 29.1,
       "GDP Growth %": 4.8,
       "population_est_mn": 16.2,
@@ -82,21 +108,22 @@
       "Inflation": 23.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100, urban-skewed lower)",
       "total_debt": {
-        "domestic_bn_naira": 886.0,
-        "external_mn_usd": 1201.0,
-        "total_naira_bn": 2651.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024). Total = calculated at ~₦1,470/$1"
+        "domestic_bn_naira": 1195.29,
+        "external_mn_usd": 1267.78,
+        "total_naira_bn": 2943.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 2780.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "VERIFIED — NBS Capital Importation Q1 2024: Lagos $2.78bn (82.42% of national total)"
+      "investment_flow_accuracy": "VERIFIED — NBS Capital Importation Q1 2024: Lagos $2.78bn (82.42% of national total)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 2,
       "state": "Rivers",
       "geopolitical_zone": "South South",
       "capital": "Port Harcourt",
-      "gdp_naira_tn": 7.96,
+      "gdp_naira_tn": 16.34,
       "pct_nationally": 3.79,
       "GDP Growth %": 2.1,
       "population_est_mn": 8.6,
@@ -117,21 +144,22 @@
       "Inflation": 25.1,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 389.2,
-        "external_mn_usd": 203.8,
-        "total_naira_bn": 688.8,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 354.64,
+        "external_mn_usd": 180.09,
+        "total_naira_bn": 603.0,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 320.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED (NIPC + Rivers state govt data 2024)"
+      "investment_flow_accuracy": "ESTIMATED (NIPC + Rivers state govt data 2024)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 3,
       "state": "Akwa Ibom",
       "geopolitical_zone": "South South",
       "capital": "Uyo",
-      "gdp_naira_tn": 7.77,
+      "gdp_naira_tn": 15.95,
       "pct_nationally": 3.7,
       "GDP Growth %": 1.8,
       "population_est_mn": 5.2,
@@ -152,21 +180,22 @@
       "Inflation": 26.0,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 132.9,
-        "external_mn_usd": 37.3,
-        "total_naira_bn": 187.7,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 81.53,
+        "external_mn_usd": 81.84,
+        "total_naira_bn": 194.4,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 85.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED (NIPC state data)"
+      "investment_flow_accuracy": "ESTIMATED (NIPC state data)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 4,
       "state": "Imo",
       "geopolitical_zone": "South East",
       "capital": "Owerri",
-      "gdp_naira_tn": 7.68,
+      "gdp_naira_tn": 15.78,
       "pct_nationally": 3.66,
       "GDP Growth %": 1.5,
       "population_est_mn": 5.1,
@@ -187,21 +216,22 @@
       "Inflation": 26.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 159.2,
-        "external_mn_usd": 74.6,
-        "total_naira_bn": 268.8,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 79.5,
+        "external_mn_usd": 109.2,
+        "total_naira_bn": 230.1,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 45.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 5,
       "state": "Delta",
       "geopolitical_zone": "South South",
       "capital": "Asaba",
-      "gdp_naira_tn": 6.35,
+      "gdp_naira_tn": 13.02,
       "pct_nationally": 3.02,
       "GDP Growth %": 1.9,
       "population_est_mn": 5.7,
@@ -222,21 +252,22 @@
       "Inflation": 25.4,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 304.5,
-        "external_mn_usd": 58.1,
-        "total_naira_bn": 389.9,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 369.3,
+        "external_mn_usd": 99.79,
+        "total_naira_bn": 506.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 180.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED (oil sector FDI, NIPC data)"
+      "investment_flow_accuracy": "ESTIMATED (oil sector FDI, NIPC data)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 6,
       "state": "Anambra",
       "geopolitical_zone": "South East",
       "capital": "Awka",
-      "gdp_naira_tn": 5.14,
+      "gdp_naira_tn": 10.56,
       "pct_nationally": 2.45,
       "GDP Growth %": 3.2,
       "population_est_mn": 5.1,
@@ -257,21 +288,22 @@
       "Inflation": 25.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 30.9,
-        "external_mn_usd": 106.6,
-        "total_naira_bn": 187.6,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 9.62,
+        "external_mn_usd": 100.84,
+        "total_naira_bn": 148.7,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1. CHECK: domestic figure identical to Mar 2026 (possible carry-forward)"
       },
       "investment_flow_mn_usd": 40.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 7,
       "state": "Ondo",
       "geopolitical_zone": "South West",
       "capital": "Akure",
-      "gdp_naira_tn": 5.1,
+      "gdp_naira_tn": 10.48,
       "pct_nationally": 2.43,
       "GDP Growth %": 2.0,
       "population_est_mn": 4.4,
@@ -292,21 +324,22 @@
       "Inflation": 24.9,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 15.1,
-        "external_mn_usd": 76.5,
-        "total_naira_bn": 127.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 6.16,
+        "external_mn_usd": 132.89,
+        "total_naira_bn": 189.4,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 30.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 8,
       "state": "Ogun",
       "geopolitical_zone": "South West",
       "capital": "Abeokuta",
-      "gdp_naira_tn": 5.03,
+      "gdp_naira_tn": 10.35,
       "pct_nationally": 2.4,
       "GDP Growth %": 3.8,
       "population_est_mn": 4.9,
@@ -327,21 +360,22 @@
       "Inflation": 23.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 211.1,
-        "external_mn_usd": 166.6,
-        "total_naira_bn": 456.1,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 189.05,
+        "external_mn_usd": 225.12,
+        "total_naira_bn": 499.5,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 240.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED (large manufacturing FDI corridor — Lekki/Ogun corridor NIPC data)"
+      "investment_flow_accuracy": "ESTIMATED (large manufacturing FDI corridor — Lekki/Ogun corridor NIPC data)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 9,
       "state": "Bayelsa",
       "geopolitical_zone": "South South",
       "capital": "Yenagoa",
-      "gdp_naira_tn": 4.63,
+      "gdp_naira_tn": 9.49,
       "pct_nationally": 2.2,
       "GDP Growth %": 1.2,
       "population_est_mn": 2.6,
@@ -362,21 +396,22 @@
       "Inflation": 26.2,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 97.5,
-        "external_mn_usd": 54.9,
-        "total_naira_bn": 178.2,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 43.49,
+        "external_mn_usd": 54.29,
+        "total_naira_bn": 118.4,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 90.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED (oil sector investment)"
+      "investment_flow_accuracy": "ESTIMATED (oil sector investment)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 10,
       "state": "Niger",
       "geopolitical_zone": "North Central",
       "capital": "Minna",
-      "gdp_naira_tn": 4.58,
+      "gdp_naira_tn": 9.4,
       "pct_nationally": 2.18,
       "GDP Growth %": 2.3,
       "population_est_mn": 6.2,
@@ -397,21 +432,22 @@
       "Inflation": 27.2,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 146.3,
-        "external_mn_usd": 75.7,
-        "total_naira_bn": 257.6,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 140.0,
+        "external_mn_usd": 183.06,
+        "total_naira_bn": 392.5,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 25.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 11,
       "state": "Kaduna",
       "geopolitical_zone": "North West",
       "capital": "Kaduna",
-      "gdp_naira_tn": 4.31,
+      "gdp_naira_tn": 8.84,
       "pct_nationally": 2.05,
       "GDP Growth %": 2.5,
       "population_est_mn": 9.4,
@@ -432,21 +468,22 @@
       "Inflation": 27.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 28.6,
-        "external_mn_usd": 641.0,
-        "total_naira_bn": 970.3,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024). NOTE: Kaduna has 2nd highest external debt ($641m) — World Bank loans"
+        "domestic_bn_naira": 87.25,
+        "external_mn_usd": 735.59,
+        "total_naira_bn": 1101.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1. NOTE: highest external debt after Lagos"
       },
       "investment_flow_mn_usd": 55.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 12,
       "state": "Benue",
       "geopolitical_zone": "North Central",
       "capital": "Makurdi",
-      "gdp_naira_tn": 4.27,
+      "gdp_naira_tn": 8.75,
       "pct_nationally": 2.03,
       "GDP Growth %": 1.6,
       "population_est_mn": 6.5,
@@ -467,21 +504,22 @@
       "Inflation": 28.0,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 116.9,
-        "external_mn_usd": 26.5,
-        "total_naira_bn": 155.9,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 112.32,
+        "external_mn_usd": 71.15,
+        "total_naira_bn": 210.4,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 8.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 13,
       "state": "Kano",
       "geopolitical_zone": "North West",
       "capital": "Kano",
-      "gdp_naira_tn": 4.2,
+      "gdp_naira_tn": 8.62,
       "pct_nationally": 2.0,
       "GDP Growth %": 2.8,
       "population_est_mn": 14.8,
@@ -502,21 +540,22 @@
       "Inflation": 28.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 63.1,
-        "external_mn_usd": 123.4,
-        "total_naira_bn": 244.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 51.17,
+        "external_mn_usd": 239.05,
+        "total_naira_bn": 380.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 60.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 14,
       "state": "Cross River",
       "geopolitical_zone": "South South",
       "capital": "Calabar",
-      "gdp_naira_tn": 4.07,
+      "gdp_naira_tn": 8.36,
       "pct_nationally": 1.94,
       "GDP Growth %": 1.7,
       "population_est_mn": 4.1,
@@ -537,21 +576,22 @@
       "Inflation": 26.3,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 155.5,
-        "external_mn_usd": 211.0,
-        "total_naira_bn": 465.7,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 130.01,
+        "external_mn_usd": 223.35,
+        "total_naira_bn": 438.1,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 22.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 15,
       "state": "Edo",
       "geopolitical_zone": "South South",
       "capital": "Benin City",
-      "gdp_naira_tn": 3.99,
+      "gdp_naira_tn": 8.19,
       "pct_nationally": 1.9,
       "GDP Growth %": 2.4,
       "population_est_mn": 4.7,
@@ -572,21 +612,22 @@
       "Inflation": 25.6,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 70.1,
-        "external_mn_usd": 381.0,
-        "total_naira_bn": 630.1,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024). NOTE: Edo has high external debt ($381m) — World Bank/AfDB loans"
+        "domestic_bn_naira": 214.93,
+        "external_mn_usd": 350.41,
+        "total_naira_bn": 698.2,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 35.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 16,
       "state": "Kogi",
       "geopolitical_zone": "North Central",
       "capital": "Lokoja",
-      "gdp_naira_tn": 3.69,
+      "gdp_naira_tn": 7.59,
       "pct_nationally": 1.76,
       "GDP Growth %": 1.4,
       "population_est_mn": 4.9,
@@ -607,21 +648,22 @@
       "Inflation": 27.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 44.1,
-        "external_mn_usd": 59.5,
-        "total_naira_bn": 131.6,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 25.39,
+        "external_mn_usd": 185.13,
+        "total_naira_bn": 280.7,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 15.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 17,
       "state": "Oyo",
       "geopolitical_zone": "South West",
       "capital": "Ibadan",
-      "gdp_naira_tn": 3.68,
+      "gdp_naira_tn": 7.55,
       "pct_nationally": 1.75,
       "GDP Growth %": 2.9,
       "population_est_mn": 8.2,
@@ -642,21 +684,22 @@
       "Inflation": 24.6,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 96.9,
-        "external_mn_usd": 57.9,
-        "total_naira_bn": 182.0,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 66.4,
+        "external_mn_usd": 108.61,
+        "total_naira_bn": 216.2,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 55.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 18,
       "state": "Abia",
       "geopolitical_zone": "South East",
       "capital": "Umuahia",
-      "gdp_naira_tn": 3.53,
+      "gdp_naira_tn": 7.24,
       "pct_nationally": 1.68,
       "GDP Growth %": 1.3,
       "population_est_mn": 3.7,
@@ -677,21 +720,22 @@
       "Inflation": 26.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 97.2,
-        "external_mn_usd": 97.3,
-        "total_naira_bn": 240.2,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 48.63,
+        "external_mn_usd": 133.55,
+        "total_naira_bn": 232.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 18.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 19,
       "state": "Katsina",
       "geopolitical_zone": "North West",
       "capital": "Katsina",
-      "gdp_naira_tn": 3.32,
+      "gdp_naira_tn": 6.81,
       "pct_nationally": 1.58,
       "GDP Growth %": 1.5,
       "population_est_mn": 8.8,
@@ -712,21 +756,22 @@
       "Inflation": 29.0,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 33.7,
-        "external_mn_usd": 113.0,
-        "total_naira_bn": 199.8,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 13.78,
+        "external_mn_usd": 240.77,
+        "total_naira_bn": 345.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 10.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 20,
       "state": "Sokoto",
       "geopolitical_zone": "North West",
       "capital": "Sokoto",
-      "gdp_naira_tn": 2.85,
+      "gdp_naira_tn": 5.86,
       "pct_nationally": 1.36,
       "GDP Growth %": 1.4,
       "population_est_mn": 5.9,
@@ -747,21 +792,22 @@
       "Inflation": 30.1,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 61.9,
-        "external_mn_usd": 52.1,
-        "total_naira_bn": 138.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 40.82,
+        "external_mn_usd": 133.49,
+        "total_naira_bn": 224.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 6.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 21,
       "state": "Adamawa",
       "geopolitical_zone": "North East",
       "capital": "Yola",
-      "gdp_naira_tn": 2.66,
+      "gdp_naira_tn": 5.48,
       "pct_nationally": 1.27,
       "GDP Growth %": 1.6,
       "population_est_mn": 4.8,
@@ -782,21 +828,22 @@
       "Inflation": 28.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 103.0,
-        "external_mn_usd": 101.7,
-        "total_naira_bn": 252.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 102.38,
+        "external_mn_usd": 159.86,
+        "total_naira_bn": 322.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 5.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 22,
       "state": "Bauchi",
       "geopolitical_zone": "North East",
       "capital": "Bauchi",
-      "gdp_naira_tn": 2.63,
+      "gdp_naira_tn": 5.39,
       "pct_nationally": 1.25,
       "GDP Growth %": 1.5,
       "population_est_mn": 7.5,
@@ -817,21 +864,22 @@
       "Inflation": 29.4,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 147.2,
-        "external_mn_usd": 185.3,
-        "total_naira_bn": 419.8,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 157.35,
+        "external_mn_usd": 265.07,
+        "total_naira_bn": 522.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 7.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 23,
       "state": "Ekiti",
       "geopolitical_zone": "South West",
       "capital": "Ado Ekiti",
-      "gdp_naira_tn": 2.35,
+      "gdp_naira_tn": 4.83,
       "pct_nationally": 1.12,
       "GDP Growth %": 1.8,
       "population_est_mn": 3.1,
@@ -852,21 +900,22 @@
       "Inflation": 24.7,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 59.7,
-        "external_mn_usd": 136.6,
-        "total_naira_bn": 260.7,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 40.78,
+        "external_mn_usd": 172.62,
+        "total_naira_bn": 278.9,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 12.75,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "PROXY — NBS Capital Importation Q1 2024: Ekiti $12.75m, 3rd only to Lagos and FCT"
+      "investment_flow_accuracy": "PROXY — NBS Capital Importation Q1 2024: Ekiti $12.75m, 3rd only to Lagos and FCT",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 24,
       "state": "Osun",
       "geopolitical_zone": "South West",
       "capital": "Osogbo",
-      "gdp_naira_tn": 2.3,
+      "gdp_naira_tn": 4.74,
       "pct_nationally": 1.1,
       "GDP Growth %": 1.9,
       "population_est_mn": 4.7,
@@ -887,21 +936,22 @@
       "Inflation": 25.0,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 86.1,
-        "external_mn_usd": 78.2,
-        "total_naira_bn": 200.9,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 78.07,
+        "external_mn_usd": 101.7,
+        "total_naira_bn": 218.3,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 12.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 25,
       "state": "Ebonyi",
       "geopolitical_zone": "South East",
       "capital": "Abakaliki",
-      "gdp_naira_tn": 2.24,
+      "gdp_naira_tn": 4.61,
       "pct_nationally": 1.07,
       "GDP Growth %": 2.1,
       "population_est_mn": 3.7,
@@ -922,21 +972,22 @@
       "Inflation": 27.4,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 20.1,
-        "external_mn_usd": 92.7,
-        "total_naira_bn": 156.3,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 11.38,
+        "external_mn_usd": 123.21,
+        "total_naira_bn": 181.3,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 5.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 26,
       "state": "Jigawa",
       "geopolitical_zone": "North West",
       "capital": "Dutse",
-      "gdp_naira_tn": 2.16,
+      "gdp_naira_tn": 4.44,
       "pct_nationally": 1.03,
       "GDP Growth %": 1.3,
       "population_est_mn": 6.5,
@@ -957,21 +1008,22 @@
       "Inflation": 30.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 1.8,
-        "external_mn_usd": 25.1,
-        "total_naira_bn": 38.7,
-        "accuracy": "VERIFIED — Jigawa had LOWEST domestic debt in Nigeria: ₦1.82bn (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 1.04,
+        "external_mn_usd": 83.21,
+        "total_naira_bn": 115.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1. NOTE: lowest domestic debt in Nigeria (₦1.04bn)"
       },
       "investment_flow_mn_usd": 4.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 27,
       "state": "Gombe",
       "geopolitical_zone": "North East",
       "capital": "Gombe",
-      "gdp_naira_tn": 2.1,
+      "gdp_naira_tn": 4.31,
       "pct_nationally": 1.0,
       "GDP Growth %": 1.6,
       "population_est_mn": 3.7,
@@ -992,21 +1044,22 @@
       "Inflation": 29.2,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 99.4,
-        "external_mn_usd": 35.4,
-        "total_naira_bn": 151.5,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 64.92,
+        "external_mn_usd": 144.72,
+        "total_naira_bn": 264.5,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 5.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 28,
       "state": "Taraba",
       "geopolitical_zone": "North East",
       "capital": "Jalingo",
-      "gdp_naira_tn": 2.04,
+      "gdp_naira_tn": 4.18,
       "pct_nationally": 0.97,
       "GDP Growth %": 1.4,
       "population_est_mn": 3.6,
@@ -1027,21 +1080,22 @@
       "Inflation": 28.7,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 84.7,
-        "external_mn_usd": 31.5,
-        "total_naira_bn": 131.0,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 75.9,
+        "external_mn_usd": 73.07,
+        "total_naira_bn": 176.7,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 4.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 29,
       "state": "Borno",
       "geopolitical_zone": "North East",
       "capital": "Maiduguri",
-      "gdp_naira_tn": 1.96,
+      "gdp_naira_tn": 4.01,
       "pct_nationally": 0.93,
       "GDP Growth %": 1.8,
       "population_est_mn": 6.7,
@@ -1062,21 +1116,22 @@
       "Inflation": 30.2,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100, conflict-elevated)",
       "total_debt": {
-        "domestic_bn_naira": 34.4,
-        "external_mn_usd": 48.5,
-        "total_naira_bn": 105.7,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 72.71,
+        "external_mn_usd": 102.52,
+        "total_naira_bn": 214.1,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 3.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 30,
       "state": "Nasarawa",
       "geopolitical_zone": "North Central",
       "capital": "Lafia",
-      "gdp_naira_tn": 1.86,
+      "gdp_naira_tn": 3.84,
       "pct_nationally": 0.89,
       "GDP Growth %": 2.0,
       "population_est_mn": 2.8,
@@ -1097,21 +1152,22 @@
       "Inflation": 27.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 23.9,
-        "external_mn_usd": 52.4,
-        "total_naira_bn": 100.9,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 27.67,
+        "external_mn_usd": 90.56,
+        "total_naira_bn": 152.6,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 8.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 31,
       "state": "Kebbi",
       "geopolitical_zone": "North West",
       "capital": "Birnin Kebbi",
-      "gdp_naira_tn": 1.8,
+      "gdp_naira_tn": 3.71,
       "pct_nationally": 0.86,
       "GDP Growth %": 1.3,
       "population_est_mn": 4.5,
@@ -1132,21 +1188,22 @@
       "Inflation": 31.0,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 15.5,
-        "external_mn_usd": 57.3,
-        "total_naira_bn": 99.7,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 14.44,
+        "external_mn_usd": 93.8,
+        "total_naira_bn": 143.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 3.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 32,
       "state": "Zamfara",
       "geopolitical_zone": "North West",
       "capital": "Gusau",
-      "gdp_naira_tn": 1.73,
+      "gdp_naira_tn": 3.54,
       "pct_nationally": 0.82,
       "GDP Growth %": 0.8,
       "population_est_mn": 4.8,
@@ -1167,21 +1224,22 @@
       "Inflation": 31.5,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100, insecurity-driven premium)",
       "total_debt": {
-        "domestic_bn_naira": 62.6,
-        "external_mn_usd": 27.5,
-        "total_naira_bn": 103.1,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 45.14,
+        "external_mn_usd": 65.16,
+        "total_naira_bn": 135.0,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 2.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 33,
       "state": "Plateau",
       "geopolitical_zone": "North Central",
       "capital": "Jos",
-      "gdp_naira_tn": 1.5,
+      "gdp_naira_tn": 3.06,
       "pct_nationally": 0.71,
       "GDP Growth %": 1.5,
       "population_est_mn": 4.2,
@@ -1202,21 +1260,22 @@
       "Inflation": 27.9,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 101.2,
-        "external_mn_usd": 33.8,
-        "total_naira_bn": 150.8,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 59.37,
+        "external_mn_usd": 141.17,
+        "total_naira_bn": 254.1,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 9.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 34,
       "state": "Enugu",
       "geopolitical_zone": "South East",
       "capital": "Enugu",
-      "gdp_naira_tn": 1.45,
+      "gdp_naira_tn": 2.98,
       "pct_nationally": 0.69,
       "GDP Growth %": 2.2,
       "population_est_mn": 4.5,
@@ -1237,21 +1296,22 @@
       "Inflation": 25.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 97.0,
-        "external_mn_usd": 80.9,
-        "total_naira_bn": 216.9,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 74.51,
+        "external_mn_usd": 141.76,
+        "total_naira_bn": 270.0,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 30.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 35,
       "state": "Kwara",
       "geopolitical_zone": "North Central",
       "capital": "Ilorin",
-      "gdp_naira_tn": 1.38,
+      "gdp_naira_tn": 2.85,
       "pct_nationally": 0.66,
       "GDP Growth %": 2.0,
       "population_est_mn": 3.2,
@@ -1272,21 +1332,22 @@
       "Inflation": 26.2,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100)",
       "total_debt": {
-        "domestic_bn_naira": 59.0,
-        "external_mn_usd": 48.5,
-        "total_naira_bn": 130.3,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 51.06,
+        "external_mn_usd": 112.65,
+        "total_naira_bn": 206.4,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 14.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 36,
       "state": "Yobe",
       "geopolitical_zone": "North East",
       "capital": "Damaturu",
-      "gdp_naira_tn": 1.09,
+      "gdp_naira_tn": 2.24,
       "pct_nationally": 0.52,
       "GDP Growth %": 1.1,
       "population_est_mn": 3.5,
@@ -1307,21 +1368,22 @@
       "Inflation": 31.8,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100, conflict-elevated)",
       "total_debt": {
-        "domestic_bn_naira": 46.2,
-        "external_mn_usd": 20.5,
-        "total_naira_bn": 76.4,
-        "accuracy": "VERIFIED — Yobe had LOWEST external debt: $20.49m (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 96.48,
+        "external_mn_usd": 79.63,
+        "total_naira_bn": 206.3,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1"
       },
       "investment_flow_mn_usd": 2.0,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "ESTIMATED"
+      "investment_flow_accuracy": "ESTIMATED",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     },
     {
       "id": 37,
       "state": "Federal Capital Territory",
       "geopolitical_zone": "FCT Abuja",
       "capital": "Abuja",
-      "gdp_naira_tn": 5.8,
+      "gdp_naira_tn": 11.9,
       "pct_nationally": 2.76,
       "GDP Growth %": 5.2,
       "population_est_mn": 3.9,
@@ -1342,26 +1404,27 @@
       "Inflation": 22.4,
       "inflation_accuracy": "ESTIMATED (NBS CPI 2024 state annual avg, old base 2009=100, urban-skewed lower)",
       "total_debt": {
-        "domestic_bn_naira": 84.6,
-        "external_mn_usd": 20.8,
-        "total_naira_bn": 115.3,
-        "accuracy": "VERIFIED domestic+external (NBS/DMO Q2 2024)"
+        "domestic_bn_naira": 358.79,
+        "external_mn_usd": 26.1,
+        "total_naira_bn": 394.8,
+        "accuracy": "VERIFIED domestic+external (DMO, as at 30 Jun 2026; external provisional). Total = calculated at ~₦1,379.18/$1. CHECK: domestic figure shares last digits with Mar 2026 value (possible DMO typo)"
       },
       "investment_flow_mn_usd": 593.6,
       "investment_flow_unit": "USD million (mn)",
-      "investment_flow_accuracy": "VERIFIED — NBS Capital Importation Q1 2024: FCT $593.58m (17.58% of national total)"
+      "investment_flow_accuracy": "VERIFIED — NBS Capital Importation Q1 2024: FCT $593.58m (17.58% of national total)",
+      "gdp_accuracy": "ESTIMATED — BudgIT 2022 state share (pct_nationally) applied to NBS rebased (2019 base) 2025 nominal GDP of ₦431.18tn. No official post-rebasing state GDP published."
     }
   ],
   "national_aggregates": {
-    "total_gdp_naira_tn": 210.0,
-    "real_gdp_growth_pct": 3.19,
-    "national_Unemployment Rate %": 5.0,
+    "total_gdp_naira_tn": 431.18,
+    "real_gdp_growth_pct": 3.87,
+    "national_Unemployment Rate %": 4.3,
     "population_est_mn": 220.0,
     "national_sector_split": {
       "services_pct": 58.76,
       "industry_pct": 22.7,
       "agriculture_pct": 18.54
     },
-    "source_note": "National sector split from NBS GDP Q2 2024 report. Total GDP is approximate nominal figure for 2024."
+    "source_note": "Nominal GDP = sum of NBS quarterly nominal GDP for 2025 (Q1 94.05, Q2 100.73, Q3 113.59, Q4 122.81 ₦tn; GDP rebased to 2019 base in 2025). Real growth 2025 = 3.87% (NBS). Unemployment = national headline for Q2 2024 (latest NBS figure found); state rates below remain 2023 annual. Population (220mn) and national_sector_split NOT refreshed (sector split is from NBS Q2 2024)."
   }
 }
